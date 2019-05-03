@@ -1,6 +1,6 @@
 
 exports.up = function(knex) {
-  return knex.schema
+    return knex.schema
     .createTable("project",tbl=>{
         tbl.increments()// primary key
 
@@ -26,14 +26,15 @@ exports.up = function(knex) {
         tbl.boolean("flag") //flag column
             .notNullable()
 
-        tbl.integer("project_id") // FK to actions table
+        
+            tbl.integer('project_id')
             .unsigned()
             .notNullable()
-            .reference("id")
-            .inTable("actions")
-            .onDelete("CASCADE")
-            .onUpdate("CASCADE")
-})
+            .references('id')
+            .inTable('project')
+            .onDelete('RESTRICT')
+            .onUpdate('CASCADE')
+    })
 };
 
 exports.down = function(knex, Promise) {
