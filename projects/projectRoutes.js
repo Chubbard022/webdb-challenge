@@ -27,5 +27,35 @@ router.get("/",(req,res)=>{
         })
 })
 
+router.get("/:id",(req,res)=>{
+        const projectID = req.params.id;
+    db("project")
+        .where({ id: projectID })
+        .first()
+        .then(response=>{
+            res.status(200).json(response)
+        })
+        .catch(err=>{
+            res.status(500).json(err)
+        })
+})
+
+router.post("/",(req,res)=>{
+        const newProject = req.body
+    db("project")
+    .insert(newProject)
+    .then(ids=>{
+        const id = ids[0];
+        db("project")
+            .where({id})
+            .first()
+            .then(response=>{
+                res.status(201).json(response)
+            })
+    }).catch(err=>{
+        res.status(500).json(err)
+    })
+
+})
 
 module.exports = router;

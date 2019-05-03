@@ -12,7 +12,6 @@ exports.up = function(knex) {
             .notNullable()
         
         tbl.boolean("flag") //flag column
-            .notNullable()
         
   })
    .createTable("action",tbl=>{
@@ -24,7 +23,6 @@ exports.up = function(knex) {
         tbl.string("notes",50) //notes column
 
         tbl.boolean("flag") //flag column
-            .notNullable()
 
         
             tbl.integer('project_id')
