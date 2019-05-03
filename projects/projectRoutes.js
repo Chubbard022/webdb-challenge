@@ -27,11 +27,10 @@ router.get("/",(req,res)=>{
         })
 })
 
-router.get("/:id",(req,res)=>{
+router.get("/:id/actions",(req,res)=>{
         const projectID = req.params.id;
-    db("project")
-        .where({ id: projectID })
-        .first()
+    db("action")
+        .where({ project_id: projectID })
         .then(response=>{
             res.status(200).json(response)
         })
