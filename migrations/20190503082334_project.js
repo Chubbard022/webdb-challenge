@@ -4,11 +4,11 @@ exports.up = function(knex) {
     .createTable("project",tbl=>{
         tbl.increments()// primary key
 
-        tbl.string("name",20) //name column
+        tbl.string("name",50) //name column
             .notNullable()
             .unique()
 
-        tbl.string("description",20) //description column
+        tbl.string("description",50) //description column
             .notNullable()
         
         tbl.boolean("flag") //flag column
@@ -18,10 +18,10 @@ exports.up = function(knex) {
    .createTable("action",tbl=>{
         tbl.increments() //primary key
 
-        tbl.string("description",20) //description column
+        tbl.string("description",50) //description column
             .notNullable()
 
-        tbl.string("notes",20) //notes column
+        tbl.string("notes",50) //notes column
 
         tbl.boolean("flag") //flag column
             .notNullable()

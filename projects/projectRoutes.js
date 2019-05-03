@@ -16,4 +16,16 @@ const knexConfig = {
 
 const db = knex(knexConfig);
 
+router.get("/",(req,res)=>{
+    db("project")
+        .then(response=>{
+            console.log("+++++++++++",response)
+                res.status(200).json(response)
+        })
+        .catch(err=>{
+            console.log("ERRR::::::",err)
+        })
+})
+
+
 module.exports = router;
